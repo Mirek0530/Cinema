@@ -14,4 +14,6 @@ public interface ShowRepository extends CrudRepository<Show, Integer> {
     Show save(Show show);
 
     List<Show> findAll();
+
+    void deleteById(Integer id);
 }

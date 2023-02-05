@@ -12,4 +12,6 @@ import java.util.List;
 public interface TicketRepository extends CrudRepository<Ticket, Integer> {
 
     List<Ticket> findAll();
+
+    void deleteById(Integer id);
 }

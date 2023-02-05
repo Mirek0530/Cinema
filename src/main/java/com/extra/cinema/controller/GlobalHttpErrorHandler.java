@@ -34,4 +34,9 @@ public class GlobalHttpErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleShowNotFoundException(ShowNotFoundException exception) {
         return new ResponseEntity<>("Show with given id does not exist", HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(TicketNotFoundException.class)
+    public ResponseEntity<Object> handleTicketNotFoundException(TicketNotFoundException exception) {
+        return new ResponseEntity<>("Ticket with given id does not exist", HttpStatus.BAD_REQUEST);
+    }
 }

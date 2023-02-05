@@ -35,6 +35,10 @@ public class CinemaDbService {
         return movieRepository.findById(id).orElseThrow(MovieNotFoundException::new);
     }
 
+    public void deleteMovie(int id) {
+        movieRepository.deleteById(id);
+    }
+
     public Room createRoom(final Room room) {
         return roomRepository.save(room);
     }
@@ -45,6 +49,10 @@ public class CinemaDbService {
 
     public Room getRoom(int id) throws RoomNotFoundException {
         return roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);
+    }
+
+    public void deleteRoom(int id) {
+        roomRepository.deleteById(id);
     }
 
     public Show createShow(final Show show) throws ShowCannotBeCreatedException {
@@ -73,7 +81,11 @@ public class CinemaDbService {
         return showRepository.findById(id).orElseThrow(ShowNotFoundException::new);
     }
 
-    public Ticket addTicket(Ticket ticket) throws TicketCannotBeCreatedException {
+    public void deleteShow(int id) {
+        showRepository.deleteById(id);
+    }
+
+    public Ticket createTicket(Ticket ticket) throws TicketCannotBeCreatedException {
         if (showRepository.findById(ticket.getShowId()).isPresent()) {
             return ticketRepository.save(ticket);
         } else {
@@ -83,5 +95,13 @@ public class CinemaDbService {
 
     public List<Ticket> getAllTickets() {
         return ticketRepository.findAll();
+    }
+
+    public Ticket getTicket(int id) throws TicketNotFoundException {
+        return ticketRepository.findById(id).orElseThrow(TicketNotFoundException::new);
+    }
+
+    public void deleteTicket(int id) {
+        ticketRepository.deleteById(id);
     }
 }

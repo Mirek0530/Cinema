@@ -38,6 +38,24 @@ public class CinemaController {
         return ResponseEntity.ok(mapper.mapToMovieDtoList(movies));
     }
 
+    @GetMapping(value = "movie={id}")
+    public ResponseEntity<MovieDto> getMovie(@PathVariable int id) throws MovieNotFoundException {
+        return ResponseEntity.ok(mapper.mapMovieToMovieDto(service.getMovie(id)));
+    }
+
+    @PutMapping(value = "movies")
+    public ResponseEntity<MovieDto> updateMovie(@RequestBody MovieDto movieDto) {
+        Movie movie = mapper.mapMovieDtoToMovie(movieDto);
+        Movie updatedMovie = service.createMovie(movie);
+        return ResponseEntity.ok(mapper.mapMovieToMovieDto(updatedMovie));
+    }
+
+    @DeleteMapping(value = "movie={id}")
+    public ResponseEntity<Void> deleteMovie(@PathVariable int id) {
+        service.deleteMovie(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping(value = "createroom")
     public ResponseEntity<Room> createRoom(@RequestBody RoomDto roomDto) {
         Room room = mapper.mapRoomDtoToRoom(roomDto);
@@ -55,9 +73,17 @@ public class CinemaController {
         return ResponseEntity.ok(mapper.mapRoomToRoomDto(service.getRoom(id)));
     }
 
-    @GetMapping(value = "movie={id}")
-    public ResponseEntity<MovieDto> getMovie(@PathVariable int id) throws MovieNotFoundException {
-        return ResponseEntity.ok(mapper.mapMovieToMovieDto(service.getMovie(id)));
+    @PutMapping(value = "rooms")
+    public ResponseEntity<RoomDto> updateRoom(@RequestBody RoomDto roomDto) {
+        Room room = mapper.mapRoomDtoToRoom(roomDto);
+        Room updatedRoom = service.createRoom(room);
+        return ResponseEntity.ok(mapper.mapRoomToRoomDto(updatedRoom));
+    }
+
+    @DeleteMapping(value = "room={id}")
+    public ResponseEntity<Void> deleteRoom(@PathVariable int id) {
+        service.deleteRoom(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, value = "createshow")
@@ -77,10 +103,23 @@ public class CinemaController {
         return ResponseEntity.ok(mapper.mapShowToShowDto(service.getShow(id)));
     }
 
+    @PutMapping(value = "shows")
+    public ResponseEntity<ShowDto> updateShow(@RequestBody ShowDto showDto) throws ShowCannotBeCreatedException {
+        Show show = mapper.mapShowDtoToShow(showDto);
+        Show updatedShow = service.createShow(show);
+        return ResponseEntity.ok(mapper.mapShowToShowDto(updatedShow));
+    }
+
+    @DeleteMapping(value = "show={id}")
+    public ResponseEntity<Void> deleteShow(@PathVariable int id) {
+        service.deleteShow(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, value = "createticket")
     public ResponseEntity<Ticket> createTicket(@RequestBody TicketDto ticketDto) throws TicketCannotBeCreatedException {
         Ticket ticket = mapper.mapTicketDtoToTicket(ticketDto);
-        return ResponseEntity.ok(service.addTicket(ticket));
+        return ResponseEntity.ok(service.createTicket(ticket));
     }
 
     @GetMapping(value = "getalltickets")
@@ -89,4 +128,21 @@ public class CinemaController {
         return ResponseEntity.ok(mapper.mapToTicketDtoList(tickets));
     }
 
+    @GetMapping(value = "ticket={id}")
+    public ResponseEntity<TicketDto> getTicket(@PathVariable int id) throws TicketNotFoundException {
+        return ResponseEntity.ok(mapper.mapTicketToTicketDto(service.getTicket(id)));
+    }
+
+    @PutMapping(value = "tickets")
+    public ResponseEntity<TicketDto> updateTicket(@RequestBody TicketDto ticketDto) throws TicketCannotBeCreatedException {
+        Ticket ticket = mapper.mapTicketDtoToTicket(ticketDto);
+        Ticket updatedTicket = service.createTicket(ticket);
+        return ResponseEntity.ok(mapper.mapTicketToTicketDto(updatedTicket));
+    }
+
+    @DeleteMapping(value = "ticket={id}")
+    public ResponseEntity<Void> deleteTicket(@PathVariable int id) {
+        service.deleteTicket(id);
+        return ResponseEntity.noContent().build();
+    }
 }

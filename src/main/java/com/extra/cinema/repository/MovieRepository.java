@@ -14,4 +14,6 @@ public interface MovieRepository extends CrudRepository<Movie, Integer> {
     Movie save(Movie movie);
 
     List<Movie> findAll();
+
+    void deleteById(Integer id);
 }

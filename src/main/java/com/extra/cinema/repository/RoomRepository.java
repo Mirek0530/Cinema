@@ -14,4 +14,6 @@ public interface RoomRepository extends CrudRepository<Room, Integer> {
     Room save(Room room);
 
     List<Room> findAll();
+
+    void deleteById(Integer id);
 }
