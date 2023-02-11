@@ -1,6 +1,6 @@
 package com.extra.cinema.repository;
 
-import com.extra.cinema.Ticket;
+import com.extra.cinema.entity.Ticket;
 import jakarta.transaction.Transactional;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

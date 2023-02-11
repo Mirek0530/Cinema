@@ -1,7 +1,7 @@
 package com.extra.cinema.dto;
 
-import com.extra.cinema.Movie;
-import com.extra.cinema.Ticket;
+import com.extra.cinema.entity.Movie;
+import com.extra.cinema.entity.Ticket;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

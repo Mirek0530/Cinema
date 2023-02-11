@@ -1,9 +1,9 @@
 package com.extra.cinema.service;
 
-import com.extra.cinema.Movie;
-import com.extra.cinema.Room;
-import com.extra.cinema.Show;
-import com.extra.cinema.Ticket;
+import com.extra.cinema.entity.Movie;
+import com.extra.cinema.entity.Room;
+import com.extra.cinema.entity.Show;
+import com.extra.cinema.entity.Ticket;
 import com.extra.cinema.exception.*;
 import com.extra.cinema.repository.MovieRepository;
 import com.extra.cinema.repository.RoomRepository;

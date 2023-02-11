@@ -1,6 +1,5 @@
 package com.extra.cinema.dto;
 
-import com.extra.cinema.Show;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

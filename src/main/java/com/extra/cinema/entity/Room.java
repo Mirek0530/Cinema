@@ -1,4 +1,4 @@
-package com.extra.cinema;
+package com.extra.cinema.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
